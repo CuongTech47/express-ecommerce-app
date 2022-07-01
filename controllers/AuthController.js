@@ -2,7 +2,10 @@ const bcrypt = require("bcrypt");
 const { response } = require("express");
 const Admin = require("../models/Admin");
 const jwt = require("jsonwebtoken");
-const secretKey = "dsahkdshakhdsa";
+
+const dotenv = require("dotenv")
+dotenv.config()
+
 
 class AuthController {
   async login(req, res) {
@@ -32,7 +35,7 @@ class AuthController {
                   admin_name: admins.admin_name,
                   admin_phone: admins.admin_phone,
                 };
-                jwt.sign(payload, secretKey, (err, token) => {
+                jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET,{expiresIn : '1h'}, (err, token) => {
                   if (err) console.log(err);
                   else {
                     return res.status(200).json({
@@ -81,16 +84,17 @@ class AuthController {
             admin_phone: req.body.admin_phone,
           });
           newAdmin.save();
-          return res.json(newAdmin);
+          return res.json({newAdmin});
         }
       });
     }
   }
   // Xóa admin
   async deleteAdmin(req, res) {
-    await Admin.remove({ _id: req.params.adminId })
+    await Admin.deleteOne({ _id: req.params.adminId })
       .exec()
       .then((response) => {
+        console.log(response)
         res.status(200).json({
           message: "Xóa admin thanh cong",
         });

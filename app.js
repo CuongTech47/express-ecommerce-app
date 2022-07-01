@@ -8,11 +8,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var route = require('./routes/index');
-
+const dotenv = require("dotenv")
+dotenv.config()
 
 
 var app = express();
-
+console.log(process.env.ACCESS_TOKEN_SECRET)
 // database setup
 
 mongoose.connect("mongodb://localhost/express-app",{
