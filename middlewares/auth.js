@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const secretKey = "dsahkdshakhdsa";
-module.exports = (req, res)=> {
+module.exports = (req, res ,next)=> {
   try {
     const token = req.headers.authorization;
 
@@ -9,8 +9,8 @@ module.exports = (req, res)=> {
     req.adminData = decoded;
     next();
   } catch (error) {
-    return error
-    
+    res.sendStatus(401)
+
   }
 }
 
