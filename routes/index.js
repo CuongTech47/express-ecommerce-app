@@ -10,7 +10,7 @@ const adminRouter = require('./admin')
 function route(app) {
   //frontend
   app.use("/",homeRouter)
-  app.use("/",authRouter)
+  app.use("/auth",authRouter)
   //backend
   app.use("/",adminRouter)
 }

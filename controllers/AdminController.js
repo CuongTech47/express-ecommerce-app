@@ -1,3 +1,7 @@
+const bcryptjs = require("bcryptjs")
+
+
+
 class AdminController {
     index(req , res ) {
         res.render('admin_login', { title: "Admin Login" , layout : false});
