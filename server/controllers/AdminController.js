@@ -90,7 +90,8 @@ class AdminController {
     }
   }
   logout(req, res) {
-    res.redirect("/admin/login");
+    res.cookie('jwt', '', { maxAge: 1 })
+    res.redirect("/admin/login")
   }
 }
 module.exports = new AdminController();
