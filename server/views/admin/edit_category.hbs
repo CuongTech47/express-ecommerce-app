@@ -6,30 +6,30 @@
             </header>
             <div class="panel-body">
                 {{ message}}
-                {{#each category}}
+                
                 <div class="position-center">
                     
                     <form role="form" action="/admin/category/update-category" method="POST">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên Danh Mục</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục"
-                                value="{{this.category_name}}" />
+                                value="{{category.category_name}}" />
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô Tả Danh Mục</label>
                             <textarea style="resize:none " rows="6" type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Mô tả danh mục" >{{this.category_desc}}</textarea>
+                                placeholder="Mô tả danh mục" >{{category.category_desc}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Slug</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục"
-                                value="{{this.category_slug}}" />
+                                value="{{category.category_slug}}" />
                         </div>
                         <button type="submit" class="btn btn-info">Cập Nhật Danh Mục Sản Phẩm</button>
                     </form>
                     
                 </div>
-                {{/each}}
+               
             </div>
         </section>
     </div>
