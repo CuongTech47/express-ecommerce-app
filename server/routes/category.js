@@ -10,5 +10,10 @@ router.get("/all-category",isAuth.reqAuthentication,categoryController.allCatego
 
 router.post("/add-category",categoryController.postAddCategory)
 
+router.get("/edit-category/:id",isAuth.reqAuthentication,categoryController.editCategory)
+router.put("/update-category/:id",categoryController.updateCategory)
+router.get("/unactive-category/:id",categoryController.unactiveCategory)
+router.get("/active-category/:id",categoryController.activeCategory)
+
 
 module.exports = router

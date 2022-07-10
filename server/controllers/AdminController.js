@@ -34,7 +34,7 @@ class AdminController {
                 res.render("pages/admin_login", { layout: false });
               } else {
                 if (isEqual == false) {
-                  errors.push({ msg: "mật khẩu không đúng" });
+                  // errors.push({ msg: "mật khẩu không đúng" });
                   res.render("pages/admin_login", { layout: false });
                 } else {
                   const payload = {
