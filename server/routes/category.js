@@ -14,6 +14,7 @@ router.get("/edit-category/:id",isAuth.reqAuthentication,categoryController.edit
 router.put("/update-category/:id",categoryController.updateCategory)
 router.get("/unactive-category/:id",categoryController.unactiveCategory)
 router.get("/active-category/:id",categoryController.activeCategory)
+router.delete("/delete-category/:id",categoryController.deleteCategory)
 
 
 module.exports = router

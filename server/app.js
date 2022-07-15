@@ -1,7 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 const mongoose = require('mongoose')
-
+const methodOverride = require("method-override")
 const { engine } =require('express-handlebars');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -46,6 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 
 app.get('*', isAuth.checkAuthentication);

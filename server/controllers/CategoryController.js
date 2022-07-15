@@ -104,10 +104,10 @@ class CategoryController {
   async updateCategory(req, res) {
     try {
       const category = await Category.findById(req.params.id);
-      await category.updateOne({ $set: req.body });
-      res.render("admin/all_category", {
-        message: "sua thuong hieu san pham thanh cong",
+      await category.updateOne({ $set: 
+        req.body
       });
+      res.redirect("/admin/category/all-category")
     } catch (error) {
       res.status(500).json(error);
     }
@@ -137,6 +137,14 @@ class CategoryController {
     } catch (error) {
       res.status(500).json(error);
     }
+  }
+  async deleteCategory(req , res) {
+    try {
+      await Category.findByIdAndDelete(req.params.id)
+      res.redirect("/admin/category/all-category")
+  } catch (error) {
+      res.status(500).json(error)
+  }
   }
 }
 

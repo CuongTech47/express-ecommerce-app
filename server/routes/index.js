@@ -8,6 +8,7 @@
 const homeRouter = require('./home')
 const adminRouter = require('./admin')
 const categoryRouter = require('./category')
+const brandRouter = require("./brand")
 function route(app) {
   //frontend
  
@@ -17,6 +18,8 @@ function route(app) {
   
   app.use("/admin",adminRouter)
   app.use("/admin/category",categoryRouter)
+  app.use("/admin/brand",brandRouter)
+  
   
 }
 module.exports = route;

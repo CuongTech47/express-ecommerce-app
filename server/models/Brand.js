@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema
 // const AutoIncrement = require('mongoose-sequence')(mongoose)
-const Brand = new Schema({
+const BrandSchema = new Schema({
     brand_name:{
         type:String,
         min:6,
@@ -39,4 +39,4 @@ const Brand = new Schema({
 })
 
 // Brand.plugin(AutoIncrement, {id : 'brand_id_couter'})
-module.exports = Brand =  mongoose.model("brand",Brand)
+module.exports = Brand =  mongoose.model("brand",BrandSchema)
