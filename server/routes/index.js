@@ -5,6 +5,7 @@
 //   res.render('index', { title: 'Express' });
 // });
 // const authRouter = require('./auth')
+const productRouter = require('./product')
 const homeRouter = require('./home')
 const adminRouter = require('./admin')
 const categoryRouter = require('./category')
@@ -19,6 +20,7 @@ function route(app) {
   app.use("/admin",adminRouter)
   app.use("/admin/category",categoryRouter)
   app.use("/admin/brand",brandRouter)
+  app.use("/admin/product",productRouter)
   
   
 }

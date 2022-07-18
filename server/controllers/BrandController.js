@@ -99,7 +99,7 @@ class BrandController {
       );
     } else {
       const admin_name = "Unknown";
-      res.render("admin/edit_category", { admin_name });
+      res.render("admin/edit_brand", { admin_name });
     }
   }
   async updateBrand(req, res) {
@@ -108,7 +108,7 @@ class BrandController {
       await brand.updateOne({ $set: 
         req.body
       });
-      res.redirect("/admin/category/all-brand")
+      res.redirect("/admin/brand/all-brand")
     } catch (error) {
       res.status(500).json(error);
     }
@@ -119,9 +119,9 @@ class BrandController {
       const brand = await Brand.findById(req.params.id);
      
       await brand.updateOne({
-        $set: {category_status : 0}
+        $set: {brand_status : 0}
       });
-      res.redirect("/admin/category/all-brand")
+      res.redirect("/admin/brand/all-brand")
     } catch (error) {
       res.status(500).json(error);
     }
@@ -132,9 +132,9 @@ class BrandController {
       const brand = await Brand.findById(req.params.id);
      
       await brand.updateOne({
-        $set: {category_status : 1}
+        $set: {brand_status : 1}
       });
-      res.redirect("/admin/category/all-brand")
+      res.redirect("/admin/brand/all-brand")
     } catch (error) {
       res.status(500).json(error);
     }

@@ -49,7 +49,7 @@ class CategoryController {
                 admin_name,
                 categories: multipleMongooseToObject(categories),
               });
-              console.log(multipleMongooseToObject(categories));
+              
             });
           }
         }
@@ -140,7 +140,7 @@ class CategoryController {
   }
   async deleteCategory(req , res) {
     try {
-      await Category.findByIdAndDelete(req.params.id)
+      await Category.DeleteOne({_id : req.params.id})
       res.redirect("/admin/category/all-category")
   } catch (error) {
       res.status(500).json(error)
