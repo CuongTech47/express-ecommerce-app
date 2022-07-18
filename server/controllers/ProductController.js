@@ -67,6 +67,9 @@ class ProductController {
       res.status(500).json(error);
     }
   }
+  allProduct(req , res) {
+
+  }
 }
 
 module.exports = new ProductController();

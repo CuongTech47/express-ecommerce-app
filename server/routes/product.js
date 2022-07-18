@@ -34,7 +34,7 @@ router.get(
   isAuth.reqAuthentication,
   productController.addproduct
 );
-// router.get("/all-category",isAuth.reqAuthentication,categoryController.allCategory)
+router.get("/all-product",isAuth.reqAuthentication,productController.allProduct)
 
 router.post("/add-product", upload.single("product_image"),productController.postAddProduct);
 
