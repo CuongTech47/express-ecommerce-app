@@ -33,32 +33,39 @@
                                 <input type="checkbox"><i></i>
                             </label>
                         </th>
-                        <th>Tên Danh Mục</th>
+                        <th>Tên Sản Phẩm</th>
                         <th>Slug</th>
+                        <th>Giá Sản Phẩm</th>
+                        <th>Hình Ảnh Sản Phẩm</th>
+                        {{!-- <th>Danh Mục Sản Phẩm</th>
+                        <th>Thương Hiệu Sản Phẩm</th> --}}
                         <th>Hiện Thị</th>
-                        <th>Ngày Thêm</th>
+                       
                         <th style="width:30px;"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each categories}}
+                    {{#each products}}
                     <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>{{ this.category_name }}</td>
-                        <td>{{ this.category_slug }}</td>
+                        <td>{{ this.product_name }}</td>
+                        <td>{{ this.product_slug }}</td>
+                        <td>{{ this.product_price }}</td>
+                         <td><img src="/frontend/images/home/{{this.product_image}}" height="100" width="100"></td>
+                        {{!-- {{#each categories}} --}}
                         <td>
                             {{#if this.category_status}}
-                            <a href="/admin/category/unactive-category/{{this._id}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                            <a href="/admin/product/unactive-product/{{this._id}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                             {{else}}
-                            <a  href="/admin/category/active-category/{{this._id}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                            <a  href="/admin/product/active-product/{{this._id}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                             {{/if}}
 
                         </td>
-                        <td>{{this.createdAt}}</td>
+                       
                         <td>
                             <a href="" ui-toggle-class="">
                                 <a class="fa fa-pencil-square-o text-success text-active"
-                                    href="/admin/category/edit-category/{{this._id}}"></a>
+                                    href="/admin/product/edit-product/{{this._id}}"></a>
                                 <a class="fa fa-times text-danger text" href="/admin/category/delete-category/{{this._id}}"></a>
                             </a>
                         </td>

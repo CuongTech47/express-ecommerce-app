@@ -38,11 +38,11 @@ const ProductSchema = new Schema({
     },
     category :{
         type: mongoose.Schema.Types.ObjectId,
-        ref : 'Category'
+        ref : 'category'
     },
     brand:{
         type: mongoose.Schema.Types.ObjectId,
-        ref : 'Brand'
+        ref : 'brand'
     }
 },{
     // _id : false,

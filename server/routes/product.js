@@ -38,7 +38,7 @@ router.get("/all-product",isAuth.reqAuthentication,productController.allProduct)
 
 router.post("/add-product", upload.single("product_image"),productController.postAddProduct);
 
-// router.get("/edit-category/:id",isAuth.reqAuthentication,categoryController.editCategory)
+router.get("/edit-product/:id",isAuth.reqAuthentication,productController.editProduct)
 // router.put("/update-category/:id",categoryController.updateCategory)
 // router.get("/unactive-category/:id",categoryController.unactiveCategory)
 // router.get("/active-category/:id",categoryController.activeCategory)

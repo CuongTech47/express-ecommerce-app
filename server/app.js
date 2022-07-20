@@ -34,7 +34,16 @@ app.use(cookieParser("SecretCookie"));
 app.use(flash())
 
 // view engine setup
-app.engine('.hbs', engine({extname: '.hbs' , defaultLayout : 'admin_layout'}));
+app.engine('.hbs', engine({extname: '.hbs',
+  helpers: {
+    eqCategory : function(v1 , v2 ) {
+      return v1 === v2
+    },
+    sum : (v1 , v2)=>{
+      return v1 + v2
+    }
+  },
+ defaultLayout : 'admin_layout'}));
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
 

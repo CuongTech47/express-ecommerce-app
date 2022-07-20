@@ -67,8 +67,82 @@ class ProductController {
       res.status(500).json(error);
     }
   }
-  allProduct(req , res) {
+  async allProduct(req , res) {
+    const products = await Product.find()
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET,
+        (err, decodedAdmin) => {
+          if (err) {
+            console.log(err);
+            next(err);
+          } else {
+            console.log("decodedAdmin", decodedAdmin);
+            Admin.findById(decodedAdmin.adminId, (err, adminData) => {
+              const admin_name = adminData.admin_name;
+              
+              res.render("admin/all_product", {
+                admin_name,
+                products: multipleMongooseToObject(products),
+                
+                
+              });
+             
+            });
+          }
+        }
+      );
+    } else {
+      const admin_name = "Unknown";
+      res.render("admin/all_category", { admin_name });
+    }
+  }
+  async editProduct(req , res) {
+    const product = await Product.findById(req.params.id).populate('category').populate('brand')
+    const category_product = await Category.find().populate('products')
+    const brand_product = await Brand.find();
+   
+   
+  //  console.log(category_product)
+   for (const iterator of category_product) {
+   
+    for (const iterator1 of iterator.products) {
+      console.log(iterator1.category)
+    }
+   
+    
+   }
 
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET,
+        (err, decodedAdmin) => {
+          if (err) {
+            console.log(err);
+            next(err);
+          } else {
+            console.log("decodedAdmin", decodedAdmin);
+            Admin.findById(decodedAdmin.adminId, (err, adminData) => {
+              const admin_name = adminData.admin_name;
+              res.render("admin/edit_product", { 
+                admin_name ,
+                product : mongooseToObject(product),
+                category_product: multipleMongooseToObject(category_product),
+                brand_product: multipleMongooseToObject(brand_product),
+               
+               });
+            });
+          }
+        }
+      );
+    } else {
+      const admin_name = "Unknown";
+      res.render("admin/edit_category", { admin_name });
+    }
   }
 }
 
